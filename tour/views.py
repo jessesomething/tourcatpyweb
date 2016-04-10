@@ -38,6 +38,11 @@ def event_edit(request, pk):
         form = EventForm(instance=event)
     return render(request, 'tour/event_edit.html', {'form': form})
 
+def event_delete(request, pk):
+    event = get_object_or_404(Event, pk=pk)
+    event.delete()
+    return redirect('tour.views.event_list')
+
 def merch_menu(request):
     merch_all = Merch.objects.all()
     return render(request, 'tour/merch_menu.html', {'merch_all' : merch_all})
