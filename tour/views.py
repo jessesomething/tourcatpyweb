@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.utils import timezone
-from .models import Event
+from .models import Event, Merch
 from django.shortcuts import render, get_object_or_404
 from .forms import EventForm
 from .forms import MerchForm
@@ -29,7 +29,7 @@ def event_new(request):
 
 def merch_list(request):
     all_merch = Merch.objects.all()
-    return render(request, 'tour/even_list.html', {'all_merch' : all_merch})
+    return render(request, 'tour/merch_list.html', {'merch_all' : merch_all})
 
 def merch_detail(request, pk):
     merch = get_object_or_404(Merch, pk=pk)
