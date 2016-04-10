@@ -55,9 +55,13 @@ class Event(models.Model):
         ('WV', 'West Virginia'),
         ('WI', 'Wisconsin'),
         ('WY', 'Wyoming'),)
+
     venue = models.CharField(max_length=200)
     city = models.CharField(max_length=200)
     state = models.CharField(max_length=100, choices=STATE_CHOICES, default='NA')
+    venue = models.CharField(max_length=200)
+    city = models.CharField(max_length=200)
+    state = models.CharField(max_length=100, choices=STATE_CHOICES, default='AL')
     #todo add more info
     # tour_name = models.CharField(max_length=200)
     # other_bands_1 = models.CharField(max_length=100, blank=True)
