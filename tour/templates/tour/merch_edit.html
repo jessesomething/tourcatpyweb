@@ -2,16 +2,8 @@
 
 {% block content %}
 <h1>New Merch</h1>
-<form method="POST" class="event-form">{% csrf_token %}
+<form method="POST" class="merch-form">{% csrf_token %}
     {{ form.as_p }}
     <button type="submit" class="save btn btn-default">Save</button>
 </form>
-{% for merch in merch_all %}
-<div class="merch">
-    <h1><a href="{% url 'merch_detail' pk=merch.pk %}">{{ merch.name }}</a></h1>
-    <p>{{ merch.merch_type }}</p>
-    <p>{{ merch.quantity }}</p>
-    <p>{{ merch.price }}</p>
-</div>
-{% endfor %}
 {% endblock %}

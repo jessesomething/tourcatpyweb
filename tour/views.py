@@ -55,8 +55,13 @@ def merch_sell(request):
     all_merch = Merch.objects.all()
     return render(request, 'tour/merch_sell.html', {'merch_all' : merch_all})
 
-def merch_detail(request, pk):
-    merch = get_object_or_404(Merch, pk=pk)
+def merch_edit(request, mk):
+    merch = get_object_or_404(Merch, mk=mk)
+    merch.quantity = merch.quantity + 1
+    return redirect('tour.views.merch_menu')
+
+def merch_detail(request, mk):
+    merch = get_object_or_404(Merch, mk=mk)
     return render(request, 'tour/merch_detail.html', {'merch' : merch})
 
 def merch_new(request):
@@ -65,7 +70,7 @@ def merch_new(request):
         if form.is_valid():
             merch = form.save(commit=False)
             merch.save()
-            return redirect('merch_detail', pk=merch.pk)
+            return redirect('merch_detail', mh=merch.mk)
     else:
         form = MerchForm()
     return render(request, 'tour/merch_edit.html', {'form' : form})

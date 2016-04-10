@@ -9,13 +9,16 @@
         <a href="{% url 'merch_new' %}" class="merch-menu"><span class="glyphicon glyphicon-plus"></span></a>
     </div>
     <div class="content container">
-        <div class="row">
+        <div class="merch">
             <div class="col-md-8">
                 {% block content %}
                 {% for merch in merch_all %}
-                <div class="post">
-                    <h1><a href="">{{ merch.name }}</a></h1>
+                <div class="merch">
+                    <h1><a href="% url 'merch_detail' mk=merch.mk %">{{ merch.name }}</a></h1>
                     <p>{{ merch.quantity|linebreaks }}</p>
+                    <a class="btn btn-default" href=""><span class="glyphicon glyphicon-plus"></span></a>
+                    <!-- <span class="glyphicon glyphicon-plus"></span>
+                    <span class="glyphicon glyphicon-minus"></span> -->
                 </div>
                 {% endfor %}
                 {% endblock %}

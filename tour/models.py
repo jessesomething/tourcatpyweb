@@ -74,8 +74,8 @@ class Event(models.Model):
     def save_event(self):
         self.save()
 
-        def __str__(self):
-            return self.venue
+    def __str__(self):
+        return self.venue
 
 class Merch(models.Model):
     TYPE_CHOICES = (
@@ -95,6 +95,9 @@ class Merch(models.Model):
     merch_type = models.CharField(max_length=100, choices=TYPE_CHOICES, default='tshirt')
     price = models.IntegerField()
     quantity = models.IntegerField()
+
+    def edit_merch(self, num):
+        self.quantity = self.quantity + num
 
     def save_merch(self):
         self.save()
