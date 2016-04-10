@@ -2,11 +2,11 @@
 {% block content %}
 {% for event in events %}
 <div class="event">
-  <div class="date">
-    {{ event.date }}
-  </div>
-  <h1><a href="{% url 'event_detail' pk=event.pk %}">{{ event.venue }}</a></h1>
-  <p>{{ event.text|linebreaks }}</p>
+    <div class="date">
+        {{ event.date }}
+    </div>
+    <h1><a href="{% url 'event_detail' pk=event.pk %}">{{ event.venue }}</a></h1>
+    <p>{{ event.text|linebreaks }}</p>
 </div>
 {% endfor %}
 {% endblock %}

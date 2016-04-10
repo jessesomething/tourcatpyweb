@@ -1,0 +1,26 @@
+{% extends 'tour/base.html' %}
+{% load staticfiles %}
+<html>
+<body>
+    <div class="merch-header">
+        <h1><a href="{% url 'merch_menu' %}">Merch Menu</a></h1>
+        <a href="{% url 'merch_list' %}" class="merch-menu"><span class="glyphicon glyphicon-camera"></span></a>
+        <a href="{% url 'merch_sell' %}" class="merch-menu"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+        <a href="{% url 'merch_new' %}" class="merch-menu"><span class="glyphicon glyphicon-plus"></span></a>
+    </div>
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+                {% block content %}
+                {% for merch in merch_all %}
+                <div class="post">
+                    <h1><a href="">{{ merch.name }}</a></h1>
+                    <p>{{ merch.quantity|linebreaks }}</p>
+                </div>
+                {% endfor %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,35 +1,35 @@
 {% load staticfiles %}
 <html>
 <head>
-  <title>TourCat - Tour View</title>
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-  <link rel="stylesheet" href="{% static 'css/tour.css' %}">
-  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+    <title>TourCat - Tour View</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/tour.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
 </head>
 <body>
-  <div class="page-header">
-    <h1><a href="/">TourCat</a></h1>
-    <a href="/" class="top-menu"><span class="glyphicon glyphicon-road"></span></a>
-    <a href="{% url 'merch_new' %}" class="top-menu"><span class="glyphicon glyphicon-tags"></span></a>
-    <a href="{% url 'event_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-  </div>
-  <div class="content container">
-    <div class="row">
-      <div class="col-md-8">
-        {% block content %}
-        {% for event in events %}
-        <div class="post">
-          <div class="date">
-            {{ event.date }}
-          </div>
-          <h1><a href="">{{ event.venue }}</a></h1>
-          <p>{{ event.text|linebreaks }}</p>
-        </div>
-        {% endfor %}
-        {% endblock %}
-      </div>
+    <div class="page-header">
+        <h1><a href="/">TourCat</a></h1>
+        <a href="/" class="top-menu"><span class="glyphicon glyphicon-road"></span></a>
+        <a href="{% url 'merch_menu' %}" class="top-menu"><span class="glyphicon glyphicon-tags"></span></a>
+        <a href="{% url 'event_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
     </div>
-  </div>
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+                {% block content %}
+                {% for event in events %}
+                <div class="post">
+                    <div class="date">
+                        {{ event.date }}
+                    </div>
+                    <h1><a href="">{{ event.venue }}</a></h1>
+                    <p>{{ event.text|linebreaks }}</p>
+                </div>
+                {% endfor %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
 </body>
 </html>

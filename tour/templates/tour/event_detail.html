@@ -1,16 +1,17 @@
 {% extends 'tour/base.html' %}
 
 {% block content %}
-    <div class="event">
-        {% if event.date %}
-            <div class="date">
-                {{ event.date }}
-            </div>
-        {% endif %}
-        <h1>{{ event.venue }}</h1>
-        <h1>{{ event.city }}</h1>
-        <h1>{{ event.date }}</h1>
-        <h1>{{ event.price }}</h1>
-        <p>{{ event.text|linebreaks }}</p>
+<div class="event">
+    {% if event.date %}
+    <div class="date">
+        {{ event.date }}
     </div>
+    {% endif %}
+    <a class="btn btn-default" href="{% url 'event_edit' pk=event.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+    <h1>{{ event.venue }}</h1>
+    <h1>{{ event.city }}</h1>
+    <h1>{{ event.date }}</h1>
+    <h1>{{ event.price }}</h1>
+    <p>{{ event.text|linebreaks }}</p>
+</div>
 {% endblock %}
