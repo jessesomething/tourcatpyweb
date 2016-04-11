@@ -44,11 +44,11 @@ def event_delete(request, pk):
     return redirect('tour.views.event_list')
 
 def merch_menu(request):
-    merch_all = Merch.objects.all()
+    merch_all = Merch.objects.filter(quantity__gte=1).order_by('merch_type')
     return render(request, 'tour/merch_menu.html', {'merch_all' : merch_all})
 
 def merch_list(request):
-    merch_all = Merch.objects.all()
+    merch_all = Merch.objects.filter(quantity__lte>0)
     return render(request, 'tour/merch_list.html', {'merch_all' : merch_all})
 
 def merch_sell(request):
@@ -56,12 +56,19 @@ def merch_sell(request):
     return render(request, 'tour/merch_sell.html', {'merch_all' : merch_all})
 
 def merch_edit(request, mk):
-    merch = get_object_or_404(Merch, mk=mk)
-    merch.quantity = merch.quantity + 1
-    return redirect('tour.views.merch_menu')
+    merch = get_object_or_404(Merch, pk=mk)
+    if request.method == "POST":
+        form = MerchForm(request.POST, instance=merch)
+        if form.is_valid():
+            merch = form.save(commit=False)
+            merch.save()
+            return redirect('merch_detail', mk=merch.pk)
+    else:
+        form = MerchForm(instance=merch)
+    return render(request, 'tour/merch_edit.html', {'form': form})
 
 def merch_detail(request, mk):
-    merch = get_object_or_404(Merch, mk=mk)
+    merch = get_object_or_404(Merch, id=mk)
     return render(request, 'tour/merch_detail.html', {'merch' : merch})
 
 def merch_new(request):

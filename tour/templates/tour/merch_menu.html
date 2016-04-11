@@ -2,21 +2,16 @@
 {% load staticfiles %}
 <html>
 <body>
-    <div class="merch-header">
-        <h1><a href="{% url 'merch_menu' %}">Merch Menu</a></h1>
-        <a href="{% url 'merch_list' %}" class="merch-menu"><span class="glyphicon glyphicon-camera"></span></a>
-        <a href="{% url 'merch_sell' %}" class="merch-menu"><span class="glyphicon glyphicon-shopping-cart"></span></a>
-        <a href="{% url 'merch_new' %}" class="merch-menu"><span class="glyphicon glyphicon-plus"></span></a>
-    </div>
     <div class="content container">
         <div class="merch">
             <div class="col-md-8">
                 {% block content %}
                 {% for merch in merch_all %}
                 <div class="merch">
-                    <h1><a href="% url 'merch_detail' mk=merch.mk %">{{ merch.name }}</a></h1>
-                    <p>{{ merch.quantity|linebreaks }}</p>
-                    <a class="btn btn-default" href=""><span class="glyphicon glyphicon-plus"></span></a>
+                    <h1><a href="{% url 'merch_detail' mk=merch.pk %}">{{ merch.name }}</a></h1>
+                    <p>Type: {{ merch.merch_type }}</p>
+                    <p>Quantity: {{ merch.quantity }}</p>
+                    <!-- <a class="btn btn-default" href="% url 'merch_detail' mk=merch.mk %"><span class="glyphicon glyphicon-plus"></span></a> -->
                     <!-- <span class="glyphicon glyphicon-plus"></span>
                     <span class="glyphicon glyphicon-minus"></span> -->
                 </div>
