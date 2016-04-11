@@ -100,7 +100,13 @@ class Merch(models.Model):
         self.quantity = self.quantity + num
 
     def save_merch(self):
-        self.save()
+        all_merch = Merch.objects.all()
+        for merch in all_merch:
+            print(merch.name)
+            if merch.name == self.name and merch.merch_type == self.merch_type:
+                merch.quantity = merch.quantity + self.quantity
+            else:
+                self.save()
 
     def __str__(self):
         return self.name

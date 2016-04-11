@@ -1,6 +1,5 @@
 from django import forms
-from .models import Event
-from .models import Merch
+from .models import Event, Merch
 
 class EventForm(forms.ModelForm):
     class Meta:
