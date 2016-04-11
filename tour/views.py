@@ -47,10 +47,6 @@ def merch_menu(request):
     merch_all = Merch.objects.filter(quantity__gte=1).order_by('merch_type')
     return render(request, 'tour/merch_menu.html', {'merch_all' : merch_all})
 
-def merch_list(request):
-    merch_all = Merch.objects.filter(quantity__lte>0)
-    return render(request, 'tour/merch_list.html', {'merch_all' : merch_all})
-
 def merch_sell(request):
     all_merch = Merch.objects.all()
     return render(request, 'tour/merch_sell.html', {'merch_all' : merch_all})
