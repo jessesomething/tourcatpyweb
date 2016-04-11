@@ -81,3 +81,8 @@ def merch_new(request):
     else:
         form = MerchForm()
     return render(request, 'tour/merch_edit.html', {'form' : form})
+
+def merch_delete(request, mk):
+    merch = get_object_or_404(Merch, pk=mk)
+    merch.delete()
+    return redirect('tour.views.merch_menu')

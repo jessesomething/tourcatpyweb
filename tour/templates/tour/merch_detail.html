@@ -3,6 +3,7 @@
 {% block content %}
 <div class="merch">
     <a class="btn btn-default" href="{% url 'merch_edit' mk=merch.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+    <a class="btn btn-default" href="{% url 'merch_delete' mk=merch.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
     <h1>{{ merch.name }}</h1>
     <h1>{{ merch.merch_type }}</h1>
     <h1>{{ merch.quantity }}</h1>
