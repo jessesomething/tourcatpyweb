@@ -79,17 +79,17 @@ class Event(models.Model):
 
 class Merch(models.Model):
     TYPE_CHOICES = (
-    ('tshirt','T-Shirt'),
-    ('sshirt','Sweatshirt'),
-    ('otherapp','Other Apparel'),
-    ('record','Record/LP/45'),
-    ('cd','CD'),
-    ('cassette','Cassette'),
-    ('digital','Digital DL'),
-    ('pin','Pin/Button'),
-    ('sticker','Sticker'),
-    ('poster','Poster'),
-    ('other','Other'),)
+    ('T-Shirt','T-Shirt'),
+    ('Sweatshirt','Sweatshirt'),
+    ('Other Apparel','Other Apparel'),
+    ('Record/LP/45','Record/LP/45'),
+    ('CD','CD'),
+    ('Cassette','Cassette'),
+    ('Digital DL','Digital DL'),
+    ('Pin/Button','Pin/Button'),
+    ('Sticker','Sticker'),
+    ('Poster','Poster'),
+    ('Other','Other'),)
 
     name = models.CharField(max_length=100)
     merch_type = models.CharField(max_length=100, choices=TYPE_CHOICES, default='tshirt')
@@ -100,6 +100,8 @@ class Merch(models.Model):
         self.quantity = self.quantity + num
 
     def save_merch(self):
+        # todo Doesn't currently check if item already exists
+        # had some trouble trying to get this to work in here
         all_merch = Merch.objects.all()
         for merch in all_merch:
             print(merch.name)
