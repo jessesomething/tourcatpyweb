@@ -1,9 +1,0 @@
-{% extends 'tour/base.html' %}
-{% block content %}
-{% for merch in merch_all %}
-<div class="merch">\
-    <h1><a href="{% url 'merch_detail' mk=merch.mk %}">{{ merch.name }}</a></h1>
-    <p>{{ merch.quantity|linebreaks }}</p>
-</div>
-{% endfor %}
-{% endblock %}

@@ -6,6 +6,7 @@
         <div class="merch">
             <div class="col-md-8">
                 {% block content %}
+                <h1><a href="/merch/new">New Item</a></h1>
                 {% for merch in merch_all %}
                 <div class="merch">
                     <h1><a href="{% url 'merch_detail' mk=merch.pk %}">{{ merch.name }}</a></h1>

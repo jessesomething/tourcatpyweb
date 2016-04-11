@@ -3,7 +3,7 @@ from django.utils import timezone
 
 class Event(models.Model):
     STATE_CHOICES = (
-    ('NA', ''),
+    (None, 'Select State'),
     ('AL', 'Alabama'),
     ('AK', 'Alaska'),
     ('AZ', 'Arizona'),

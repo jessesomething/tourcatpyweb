@@ -77,7 +77,7 @@ def merch_new(request):
         if form.is_valid():
             merch = form.save(commit=False)
             merch.save()
-            return redirect('merch_detail', mh=merch.mk)
+            return redirect('merch_detail', mk=merch.pk)
     else:
         form = MerchForm()
     return render(request, 'tour/merch_edit.html', {'form' : form})
